@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        form {
+            border: 1px solid black;
+            padding: 20px;
+            display: inline-block;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+<h1>Examples</h1>
+
+<form th:action="@{/echo/get}">
+    <h2>Basic GET</h2>
+
+    <p>A very simple form using GET.</p>
+
+    <label for="ex1FirstName">First Name</label><br/>
+    <input id="ex1FirstName" name="firstName"/><br/>
+
+    <label for="ex1LastName">Last Name</label><br/>
+    <input id="ex1LastName" name="lastName"/><br/><br/>
+
+    <input type="submit" name="submit" value="Submit"/>
+</form>
+
+<form th:action="@{/echo/get/multiple}">
+    <h2>Basic GET</h2>
+
+    <p>GET with multi-select.</p>
+
+    <select name="hobbies" multiple="multiple">
+        <option>Programming</option>
+        <option>Writing</option>
+        <option>Gaming</option>
+        <option>Raising Turtles</option>
+    </select><br/><br/>
+
+    <input type="submit" name="submit" value="Submit"/>
+</form>
+
+<form th:action="@{/echo/post}" method="post">
+    <h2>Basic POST</h2>
+
+    <p>A very simple form using POST.</p>
+
+    <label for="ex2FirstName">First Name</label><br/>
+    <input id="ex2FirstName" name="firstName"/><br/>
+
+    <label for="ex1LastName">Last Name</label><br/>
+    <input id="ex2LastName" name="lastName"/><br/><br/>
+
+    <input type="submit" name="submit" value="Submit"/>
+</form>
+
+<form th:action="@{/echo/multipart}" enctype="multipart/form-data" method="post">
+    <h2>Multipart POST</h2>
+
+    <p>A more advanced POST that can upload files.</p>
+
+    <label for="ex3FirstName">First Name</label><br/>
+    <input id="ex3FirstName" name="firstName"/><br/>
+
+    <label for="ex3LastName">Last Name</label><br/>
+    <input id="ex3LastName" name="lastName"/><br/>
+
+    <label for="ex3file">File</label><br/>
+    <input id="ex3file" name="file" type="file"/><br/><br/>
+
+    <input type="submit" name="submit" value="Submit"/>
+</form>
+
+<h2>Request Preview</h2>
+<p>Submit one of the forms above to see some information about the request.</p>
+<pre th:text="${responseDescription}">
+
+</pre>
+
+</body>
+</html>
