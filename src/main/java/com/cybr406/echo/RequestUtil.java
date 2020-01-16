@@ -52,7 +52,7 @@ public class RequestUtil {
             out.println("None");
         else
             request.getParameterMap()
-                    .forEach((key, values) -> out.printf("%s: %s\n", key, String.join(", ", values)));
+                    .forEach((key, values) -> out.printf("%s: %s\r\n", key, String.join(", ", values)));
     }
 
     public static void printHeaders(PrintWriter out, HttpServletRequest request) {
@@ -61,7 +61,7 @@ public class RequestUtil {
             out.println("None");
         else
             Collections.list(request.getHeaderNames())
-                    .forEach(name -> out.printf("%s: %s\n", name, request.getHeader(name)));
+                    .forEach(name -> out.printf("%s: %s\r\n", name, request.getHeader(name)));
     }
 
     public static void printParts(PrintWriter out, HttpServletRequest request) throws IOException {
@@ -69,7 +69,7 @@ public class RequestUtil {
         try {
             out.println(request.getParts().stream()
                     .map(RequestUtil::partToString)
-                    .collect(Collectors.joining("\n\n")));
+                    .collect(Collectors.joining("\r\n\r\n")));
         } catch (ServletException e) {
             out.println("None");
         }
@@ -79,9 +79,9 @@ public class RequestUtil {
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
         pw.println(part.getName());
-        pw.printf("Submitted file name: %s\n", part.getSubmittedFileName());
-        pw.printf("Content type: %s\n", part.getContentType());
-        pw.printf("Size: %d bytes\n", part.getSize());
+        pw.printf("Submitted file name: %s\r\n", part.getSubmittedFileName());
+        pw.printf("Content type: %s\r\n", part.getContentType());
+        pw.printf("Size: %d bytes\r\n", part.getSize());
 
         try {
             InputStream in = part.getInputStream();

@@ -1,6 +1,5 @@
 POST /echo/post HTTP/1.1
 Host: localhost:8080
-connection: keep-alive
 content-length: 34
 content-type: application/x-www-form-urlencoded
 

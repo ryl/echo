@@ -1,3 +1,2 @@
-GET /echo/get?firstName=Test&lastName=Testerton HTTP/1.1
+GET / HTTP/1.1
 host: localhost:8080
-connection: keep-alive
